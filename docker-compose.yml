@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  bird-counter:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "3000:80"
+    container_name: bird-counter-app
+    restart: unless-stopped
+    networks:
+      - bird-counter-network
+
+networks:
+  bird-counter-network:
+    driver: bridge
